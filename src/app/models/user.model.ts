@@ -5,5 +5,5 @@ export interface UserRequest {
 }
 
 export interface UserResponse extends UserRequest {
-    id: string;
+    _id: string;
 }

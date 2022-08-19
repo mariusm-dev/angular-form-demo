@@ -1,5 +1,5 @@
 <p-card header="Added users">
-    <div *ngFor="let log of logs">
+    <div [id]="'log_'+ log._id" *ngFor="let log of logs">
         {{log | json}}
     </div>
 </p-card>
