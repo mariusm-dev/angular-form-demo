@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
@@ -14,7 +14,7 @@ import { strongEmailValidator } from 'src/app/custom-validators/strong-email-val
     templateUrl: './sign-up.component.html',
     styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit, OnDestroy {
 
     @Output() userResponse = new EventEmitter<UserResponse>();
 
