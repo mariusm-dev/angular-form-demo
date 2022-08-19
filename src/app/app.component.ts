@@ -7,7 +7,6 @@ import { UserResponse } from './models/user.model';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'angular-form-demo';
 
     public logs: UserResponse[] = [];
 
