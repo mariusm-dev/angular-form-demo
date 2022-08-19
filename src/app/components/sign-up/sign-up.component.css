@@ -1,0 +1,7 @@
+.btnLoader {
+    display: flex;
+    align-items: center;
+    width: 30px;
+    height: 15px;
+    margin-right: 10px;
+}

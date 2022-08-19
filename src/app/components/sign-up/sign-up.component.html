@@ -1,0 +1,66 @@
+<p-card header="Sign-up Form">
+    <form class="grid" [formGroup]="signUpForm" (keyup.enter)="submit()">
+        <div class="col-12">
+            <label for="firstName">First Name</label>
+            <input id="firstName" class="col-12" type="text" pInputText formControlName="firstName"
+                placeholder="First Name" />
+            <ng-container
+                *ngTemplateOutlet="errorRender; context: {controlName: 'firstName', controls: signUpForm.controls}">
+            </ng-container>
+        </div>
+        <div class="col-12">
+            <label for="lastName">Last Name</label>
+            <input id="lastName" class="col-12" type="text" pInputText formControlName="lastName"
+                placeholder="Last Name" />
+            <ng-container
+                *ngTemplateOutlet="errorRender; context: {controlName: 'lastName', controls: signUpForm.controls}">
+            </ng-container>
+        </div>
+        <div class="col-12">
+            <label for="email">Email</label>
+            <input id="email" class="col-12" type="text" pInputText formControlName="email" placeholder="Email" />
+            <ng-container
+                *ngTemplateOutlet="errorRender; context: {controlName: 'email', controls: signUpForm.controls}">
+            </ng-container>
+        </div>
+        <div class="col-12">
+            <label for="password">Password</label>
+            <input id="password" class="col-12" type="password" pInputText formControlName="password" />
+            <ng-container
+                *ngTemplateOutlet="errorRender; context: {controlName: 'password', controls: signUpForm.controls}">
+            </ng-container>
+        </div>
+        <div class="col-12">
+            <button pButton pRipple (click)="reset()" type="button" label="RESET"
+                class="p-button-rounded p-button-warning mr-2"></button>
+            <button pButton pRipple (click)="submit()" type="button" label="SUBMIT"
+                class="p-button-rounded p-button-success">
+                <p-progressSpinner class="btnLoader" *ngIf="saveInProgress"></p-progressSpinner>
+            </button>
+        </div>
+    </form>
+</p-card>
+
+<ng-template #errorRender let-controlName="controlName" let-controls="controls">
+    <small *ngIf="controls?.[controlName]?.errors && submited" class="p-error">
+        <div *ngIf="controls?.[controlName]?.errors?.['required']">
+            Required
+        </div>
+        <div *ngIf="controls?.[controlName]?.errors?.['whitespace']">
+            Whitespace is not allowed!
+        </div>
+        <div *ngIf="controls?.[controlName]?.errors?.['invalidEmail']">
+            You must enter a valid email!
+        </div>
+        <div *ngIf="controls?.[controlName]?.errors?.['minlength']">
+            You must enter a minimum of {{controls?.[controlName]?.errors?.['minlength']?.requiredLength}} characters!
+        </div>
+        <div *ngIf="controls?.[controlName]?.errors?.['lowerUpperCaseValidator']">
+            <div>Should contain lower and uppercase letters!</div>
+        </div>
+        <div *ngIf="controls?.[controlName]?.errors?.['forbiddenWords']">
+            <div>Password can't contain first name or last name</div>
+        </div>
+
+    </small>
+</ng-template>
